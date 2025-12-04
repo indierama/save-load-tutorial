@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc0wwhenr8hhx"]
+[gd_scene load_steps=6 format=3 uid="uid://cc0wwhenr8hhx"]
 
-[ext_resource type="Texture2D" uid="uid://cgineujd3in0r" path="res://assets/sprites/collectibles/apple.png" id="1_2gk83"]
 [ext_resource type="Script" uid="uid://c358oe8sdjxwl" path="res://scenes/collectibles/fruit.gd" id="1_yv0hk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ybo"]
@@ -45,12 +44,11 @@ _data = {
 &"apple": SubResource("Animation_ffugl")
 }
 
-[node name="Fruit" type="Area2D"]
+[node name="Fruit" type="Area2D" groups=["fruits"]]
 script = ExtResource("1_yv0hk")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2gk83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

@@ -1,16 +1,12 @@
 extends Area2D
 
+@export var texture: Texture2D
+@export var points: int
 @onready var sprite_2d = $Sprite2D
-var points = 10
 
-var fruit_sprites = [
-	preload("res://assets/sprites/collectibles/apple.png"),
-	preload("res://assets/sprites/collectibles/orange.png"),
-	preload("res://assets/sprites/collectibles/watermelon.png")
-]
 
 func _ready():
-	sprite_2d.texture = fruit_sprites.pick_random()
+	sprite_2d.texture = texture
 
 
 func _on_area_entered(area):

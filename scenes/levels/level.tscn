@@ -1,12 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://ctl7y8wie5dsn"]
+[gd_scene load_steps=19 format=4 uid="uid://ctl7y8wie5dsn"]
 
 [ext_resource type="PackedScene" uid="uid://cs72dd0vxs704" path="res://scenes/player/player.tscn" id="1_p0ven"]
 [ext_resource type="Texture2D" uid="uid://dmnsxpsljs5x5" path="res://assets/sprites/tiles/background-tile.png" id="1_xkw8q"]
 [ext_resource type="Texture2D" uid="uid://bwtbwdbm6ldkp" path="res://assets/sprites/tiles/foreground.png" id="2_qh7vc"]
 [ext_resource type="PackedScene" uid="uid://cc0wwhenr8hhx" path="res://scenes/collectibles/fruit.tscn" id="3_mbbpy"]
 [ext_resource type="FontFile" uid="uid://b5hmonq1ndbrv" path="res://assets/fonts/BD_Cartoon_Shout.ttf" id="4_d4w6o"]
+[ext_resource type="Texture2D" uid="uid://dblmmvytop5ul" path="res://assets/sprites/collectibles/orange.png" id="4_qogh7"]
 [ext_resource type="Texture2D" uid="uid://clx25cyjsigp1" path="res://assets/sprites/ui/button-normal.png" id="4_urvlt"]
+[ext_resource type="Texture2D" uid="uid://svlqisl41mep" path="res://assets/sprites/collectibles/watermelon.png" id="5_8iyoh"]
 [ext_resource type="Texture2D" uid="uid://xnj8xbm4i5dw" path="res://assets/sprites/ui/button-highlight.png" id="5_d4w6o"]
+[ext_resource type="Script" uid="uid://b6jai34e40a1h" path="res://scenes/levels/buttons_container.gd" id="5_rmjfq"]
+[ext_resource type="Texture2D" uid="uid://cgineujd3in0r" path="res://assets/sprites/collectibles/apple.png" id="6_mq31s"]
 [ext_resource type="Script" uid="uid://edjhfnxkj21l" path="res://scenes/levels/score_label.gd" id="8_ouxo3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2j6ex"]
@@ -109,21 +113,33 @@ tile_set = SubResource("TileSet_1g3ir")
 
 [node name="Fruit" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(201, 85)
+texture = ExtResource("4_qogh7")
+points = 15
 
 [node name="Fruit2" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(282, 49)
+texture = ExtResource("5_8iyoh")
+points = 20
 
 [node name="Fruit3" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(360, 129)
+texture = ExtResource("6_mq31s")
+points = 10
 
 [node name="Fruit6" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(125, 118)
+texture = ExtResource("6_mq31s")
+points = 10
 
 [node name="Fruit4" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(388, 129)
+texture = ExtResource("6_mq31s")
+points = 10
 
 [node name="Fruit5" parent="Collectibles" instance=ExtResource("3_mbbpy")]
 position = Vector2(416, 129)
+texture = ExtResource("6_mq31s")
+points = 10
 
 [node name="Player" parent="." instance=ExtResource("1_p0ven")]
 position = Vector2(229, 158)
@@ -144,10 +160,12 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
+script = ExtResource("5_rmjfq")
 
 [node name="SaveButton" type="Button" parent="UI/ButtonsContainer"]
 custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_d4w6o")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxTexture_mbbpy")
@@ -175,3 +193,6 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_d4w6o")
 text = "0"
 script = ExtResource("8_ouxo3")
+
+[connection signal="button_down" from="UI/ButtonsContainer/SaveButton" to="UI/ButtonsContainer" method="_on_save_button_button_down"]
+[connection signal="button_down" from="UI/ButtonsContainer/LoadButton" to="UI/ButtonsContainer" method="_on_load_button_button_down"]
